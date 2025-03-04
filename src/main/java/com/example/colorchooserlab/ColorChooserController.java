@@ -27,6 +27,17 @@ public class ColorChooserController {
     private int blue = 0;
     private double alpha = 1.0;
 
+
+    // Method to update the rectangle's color
+    private void updateColor() {
+        red = (int) redSlider.getValue();
+        green = (int) greenSlider.getValue();
+        blue = (int) blueSlider.getValue();
+        alpha = alphaSlider.getValue();
+
+        colorRectangle.setFill(Color.rgb(red, green, blue, alpha));
+    }
+
     public void initialize() {
         redTextField.textProperty().bindBidirectional(redSlider.valueProperty(), new NumberStringConverter());
         greenTextField.textProperty().bindBidirectional(greenSlider.valueProperty(), new NumberStringConverter());
@@ -39,13 +50,5 @@ public class ColorChooserController {
         alphaSlider.valueProperty().addListener((obs, oldVal, newVal) -> updateColor());
     }
 
-    // Method to update the rectangle's color
-    private void updateColor() {
-        red = (int) redSlider.getValue();
-        green = (int) greenSlider.getValue();
-        blue = (int) blueSlider.getValue();
-        alpha = alphaSlider.getValue();
 
-        colorRectangle.setFill(Color.rgb(red, green, blue, alpha));
-    }
 }
